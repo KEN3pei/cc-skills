@@ -9,7 +9,7 @@ import (
 )
 
 // minDisplayLength はフィルタ条件：display のルーン数がこれ以上なら有効とみなす。
-// @ken:これによって/exitのようなコマンド系や簡単すぎるプロンプトはレビュー対象から外している。
+// これによって/exitのようなコマンド系や簡単すぎるプロンプトはレビュー対象から外している。
 const minDisplayLength = 15
 
 // Prompt は会話履歴から抽出した1件のユーザープロンプトを表す。
@@ -19,7 +19,6 @@ type Prompt struct {
 }
 
 // historyEntry は history.jsonl の1行を表す。
-// SAMPLE: {"display":"/exit ","pastedContents":{},"timestamp":1773410475579,"project":"/Users/uenokensuke/claude","sessionId":"fdfff602-4689-4298-95d1-64345bcb5903"}
 type historyEntry struct {
 	Display        string                   `json:"display"`
 	PastedContents map[string]pastedContent `json:"pastedContents"`
@@ -102,7 +101,7 @@ func ReadPromptsFromFile(path string, limit int) ([]Prompt, error) {
 }
 
 // collectPastedText は pastedContents から type=="text" のコンテンツを結合して返す。
-// @ken:history.jsonlの履歴からtype=imageのものはレビューできないのでここで対象から外している。
+// history.jsonlの履歴からtype=imageのものはレビューできないのでここで対象から外している。
 func collectPastedText(contents map[string]pastedContent) string {
 	var result string
 	for _, c := range contents {
