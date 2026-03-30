@@ -1,4 +1,4 @@
-# cc-skills
+# claude-code-skills
 
 ### /prompt-token-reviewer
 
