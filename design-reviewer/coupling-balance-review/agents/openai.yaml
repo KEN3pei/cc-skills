@@ -1,0 +1,4 @@
+interface:
+  display_name: "結合バランスレビュー"
+  short_description: "ソフトウェア設計の結合を強度・距離・変動性でレビューします"
+  default_prompt: "このシステム設計を結合バランスの観点でレビューして"
