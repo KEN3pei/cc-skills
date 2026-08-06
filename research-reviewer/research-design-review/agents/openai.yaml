@@ -1,0 +1,4 @@
+interface:
+  display_name: "リサーチ設計レビュー"
+  short_description: "調査前に意思決定・仮説・証拠ギャップを詰めます"
+  default_prompt: "Use $research-design-review to review this research design before starting investigation."
