@@ -27,11 +27,24 @@ AndroidのChromeタブを取得し、技術系のものだけ要約してMarkdow
 /android-tabs ~/Documents/tabs/2026-08-06.md
 ```
 
-保存先パスを省略した場合は `~/chrome-tabs-{YYYY-MM-DD}.md` に保存する。
+保存先パスを省略した場合は、`~/.claude/skills/android-tabs/config` の `OUTPUT_DIR` を参照する。そちらも未設定の場合は `~/chrome-tabs-{YYYY-MM-DD}.md` に保存する。
 
 ## 実行フロー
 
 以下の手順で実行すること。各ステップで失敗した場合はエラー内容をユーザーに伝えて停止する。
+
+### ステップ0: 保存先パスの決定
+
+以下の優先順位で保存先パスを決定する:
+
+1. `$ARGUMENTS` が指定されていればそれを使う
+2. `~/.claude/skills/android-tabs/config` が存在すれば `OUTPUT_DIR` を読み取り、`{OUTPUT_DIR}/tabs-{YYYY-MM-DD}.md` を使う
+3. いずれもなければ `~/chrome-tabs-{YYYY-MM-DD}.md` を使う
+
+configファイルの読み取りは以下のBashコマンドで行う:
+```bash
+grep '^OUTPUT_DIR=' ~/.claude/skills/android-tabs/config | cut -d= -f2
+```
 
 ### ステップ1: タブ一覧取得
 
