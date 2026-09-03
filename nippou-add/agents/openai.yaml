@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nippou Add"
+  short_description: "Append a bullet to today's Obsidian daily note Nippo section."
+  default_prompt: "今日の Nippo に追記する内容を書いてください。"
